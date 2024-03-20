@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coding Challenge 5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: lightseagreen;
+        }
+    </style>
+</head>
+<body>
+    <h1>Modified FLAMES</h1>
+
+    <h3 id="names"></h3>
+
+    <button onclick="flames()">Match Names</button>
+    <h4>FLAMES Result:</h4>
+    <h3 id="result"></h3>
+
+    <script>
+        function flames() {
+            var name1 = prompt("Input name 1:").toLowerCase().replace(/[^a-z]/g, '');
+            var name2 = prompt("Input name 2:").toLowerCase().replace(/[^a-z]/g, '');
+
+            document.getElementById("names").textContent = "Names: " + name1 + " and " + name2;
+
+            var totalCharacters = countCharacters(name1) + countCharacters(name2);
+            var flamesIndex = totalCharacters % 6;
+
+            var resultMeaning = ["Sweethearts", "Friends", "Lovers", "Acquaintances", "Marriage", "Enemies"];
+
+            document.getElementById("result").textContent = "Result: " + resultMeaning[flamesIndex];
+        }
+
+        function countCharacters(name) {
+            var count = 0;
+            for (var i = 0; i < name.length; i++) {
+                if (name[i] >= 'a' && name[i] <= 'z') {
+                    count++;
+                }
+            }
+            return count;
+        }
+    </script>
+</body>
+</html>
+
